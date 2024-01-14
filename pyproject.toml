@@ -1,19 +1,21 @@
-# untested
-
-[project]
-name = "mypackage"
-version = "0.0.1"
-dynamic = ["dependencies"]
+[tool.poetry]
+name = "python-template"
+version = "0.1.0"
+description = "Sample description"
 authors = ["Oliver Stoll <oliverstoll.berlin@gmail.com>"]
+readme = "README.md"
 
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^2.15.0"
+ruff = "^0.1.13"
+pytest = "^7.4.4"
 
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
-
-
-[tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
-line-length = 100  # defaults to 88
+line-length = 100
