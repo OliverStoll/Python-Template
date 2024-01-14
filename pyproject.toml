@@ -4,6 +4,7 @@
 name = "mypackage"
 version = "0.0.1"
 dynamic = ["dependencies"]
+authors = ["Oliver Stoll <oliverstoll.berlin@gmail.com>"]
 
 
 [build-system]
