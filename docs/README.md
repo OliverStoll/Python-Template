@@ -1,11 +1,29 @@
-# Prepare Project
-Install the requirements and pre-commit hooks (code blocks separated due to pycharm bug)
-```bash
-pip install poetry
-```
+# Project Template
+>*codeblocks are reversed due to a pycharm bug*
+> 
+## Prepare Project
+Install the requirements and pre-commit hooks 
 ```bash
 poetry install --no-root
+pip install poetry
 ```
+
+#### Hide unnecessary folder from PyCharm
+*Settings -> Editor -> File Types -> Ignore files and folders*
+- .mypy_cache
+- .pytest_cache
+- .ruff_cache
+
+## Use Project
+
+#### Run tests
 ```bash
-pre-commit install
+pytest
+```
+
+#### Serve documentation
+```bash
+sphinx-serve -h localhost
+make html
+cd docs
 ```
