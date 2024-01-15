@@ -1,6 +1,8 @@
 # Project Template
 >*codeblocks are reversed due to a pycharm bug*
-> 
+
+Use this template via `git clone https://github.com/OliverStoll/python-template`
+
 ## Prepare Project
 Install the requirements and pre-commit hooks 
 ```bash
