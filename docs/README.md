@@ -10,22 +10,25 @@ poetry install --no-root
 pip install poetry
 ```
 
-#### Hide unnecessary folder from PyCharm
+### Hide unnecessary folder from PyCharm
 *Settings -> Editor -> File Types -> Ignore files and folders*
+- poetry.lock
 - .mypy_cache
 - .pytest_cache
 - .ruff_cache
 
 ## Use Project
 
-#### Run tests
+### Run tests
 ```bash
 pytest
 ```
 
-#### Serve documentation
+### Serve documentation
 ```bash
 sphinx-serve -h localhost
 make html
+sphinx-apidoc -t _templates -o source/ ../src
+make clean
 cd docs
 ```

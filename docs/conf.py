@@ -1,7 +1,8 @@
 # import path for autodoc
+import os
 import sys
 
-sys.path.append("../src")
+sys.path.insert(0, os.path.abspath(".."))
 
 
 # -- Project information -----------------------------------------------------
@@ -27,7 +28,8 @@ extensions = [
     "sphinx.ext.autosummary",
 ]
 
-# Napoleon settings
+# Settings
+autosummary_generate = True
 napoleon_google_docstring = True
 napoleon_numpy_docstring = True
 napoleon_include_init_with_doc = True
@@ -47,7 +49,6 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "sphinx_rtd_theme"
-html_static_path = ["_static"]
 html_show_sphinx = False
 html_show_copyright = False
 html_show_sourcelink = False
