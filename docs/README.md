@@ -1,6 +1,6 @@
 # Project Template
 > [!Caution]
-> Codeblocks are reversed due to a pycharm bug
+> Codeblocks are reversed due to a pycharm bug, revert them to use in VSCode
 
 This Template provides a basic structure for a python project.
 It uses:
