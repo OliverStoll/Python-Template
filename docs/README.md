@@ -1,5 +1,5 @@
 # Project Template
-> [!IMPORTANT]
+> [!Caution]
 > Codeblocks are reversed due to a pycharm bug
 
 This Template provides a basic structure for a python project.
