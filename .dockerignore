@@ -1,0 +1,7 @@
+docs/
+venv/
+tests/
+poetry.lock
+.mypy_cache
+.pytest_cache
+.ruff_cache
