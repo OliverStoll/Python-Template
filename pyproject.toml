@@ -16,6 +16,12 @@ python = "^3.11"
 python-dotenv = "^1.0.0"
 
 
+[tool.poetry.group.cloud.dependencies]
+optional = true
+uvicorn = "^0.27.0.post1"
+fastapi = "^0.109.0"
+google-cloud-logging = "^3.9.0"
+
 
 [tool.poetry.group.dev.dependencies]
 poetry = "^1.7.1"

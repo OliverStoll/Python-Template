@@ -1,0 +1,7 @@
+venv/
+data/
+docs/
+tests/
+poetry.lock
+
+.env

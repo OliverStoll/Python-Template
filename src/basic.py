@@ -1,10 +1,11 @@
-class TestClass:
+class BasicClass:
     """Test class"""
 
-    def add_one(self, num):
-        """Number function"""
-        return num + 1
-
-    def add_string(self, string):
+    def add_string(self, string_1, string_2):
         """String function"""
-        return string + "test"
+        return string_1 + string_2
+
+    def print_hello(self):
+        """Print function"""
+        string = self.add_string("Hello", " World")
+        print(string)
