@@ -3,7 +3,7 @@ WORKDIR /app
 COPY pyproject.toml ./
 RUN pip install poetry
 RUN poetry config virtualenvs.create false
-RUN poetry install --only main
+RUN poetry install --with cloud --without dev
 COPY . .
 
 EXPOSE 8080

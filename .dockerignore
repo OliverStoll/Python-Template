@@ -1,7 +1,9 @@
 venv/
-data/
 docs/
 tests/
 poetry.lock
+.mypy_cache
+.pytest_cache
+.ruff_cache
 
 .env
