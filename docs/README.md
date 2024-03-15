@@ -55,7 +55,9 @@ sphinx-apidoc -t _templates -o source/ ../src
 make clean
 cd docs
 ```
-### Deploy to cloud
+
+
+# Deploy to cloud
 - Replace the `[PROJECT-ID]` and `[REPO]` with your project and repository name, and `[IMAGE]` with the name you want
 - check the dockerfile says `COPY . .` and not `COPY pythonproject .`
 - check you installed all dependencies using `poetry add` and not `pip install`
@@ -72,4 +74,9 @@ docker run -p 8080:8080 europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]
 ```bash
 # push to artifact registry
 docker push europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]
+```
+
+### Now you can deploy using gcloud sdk:
+```bash
+gcloud run deploy [SERVICE_NAME] --image=europe-west1-docker.pkg.dev/[PROJECT_NAME]/[REPO_NAME]/[IMAGE_NAME]:latest --region=europe-west1 --project=[PROJECT_NAME]
 ```
