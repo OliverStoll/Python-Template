@@ -5,7 +5,7 @@ import json
 from src._utils.logger import create_logger
 
 
-class FirebaseHandler:
+class FirebaseClient:
     def __init__(self, realtime_db_url: str | None = None):
         """Firebase client to interact with a realtime database
 
@@ -120,5 +120,5 @@ class FirebaseHandler:
 
 
 if __name__ == "__main__":
-    firebase = FirebaseHandler()
+    firebase = FirebaseClient()
     firebase.update_value(ref="To-Do/t-18002271", key="start_datum", value="2022_01_01")
