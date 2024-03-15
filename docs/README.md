@@ -78,5 +78,6 @@ docker push europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]
 
 ### Now you can deploy using gcloud sdk:
 ```bash
-gcloud run deploy [SERVICE_NAME] --image=europe-west1-docker.pkg.dev/[PROJECT_NAME]/[REPO_NAME]/[IMAGE_NAME]:latest --region=europe-west1 --project=[PROJECT_NAME]
+gcloud run deploy [SERVICE-NAME]  --allow-unauthenticated
+--image=europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]:latest --region=europe-west1 --project=[PROJECT-ID]
 ```
