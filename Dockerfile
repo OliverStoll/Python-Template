@@ -7,5 +7,5 @@ RUN poetry install --with cloud --without dev
 COPY . /app
 
 EXPOSE 8080
-ENV IS_CLOUD=true
+ENV IS_DOCKER=true
 CMD ["python", "./src/cloud_entry.py"]
