@@ -6,17 +6,14 @@ from fastapi.responses import JSONResponse
 import os
 import uvicorn
 
-from basic import BasicClass
-
 
 app = FastAPI()
-test_class = BasicClass()
 
 
 @app.get("/")
 async def root():
     message = "Done"
-    test_class.print_hello()
+    # TODO: call the method you want
     return JSONResponse(content={"message": message})
 
 

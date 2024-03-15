@@ -54,3 +54,21 @@ sphinx-apidoc -t _templates -o source/ ../src
 make clean
 cd docs
 ```
+### Deploy to cloud
+- Replace the `[PROJECT-ID]` and `[REPO]` with your project and repository name, and `[IMAGE]` with the name you want
+- check the dockerfile says `COPY . .` and not `COPY pythonproject .`
+- check you installed all dependencies using `poetry add` and not `pip install`
+```bash
+# build docker image
+docker build -t europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE] .
+```
+
+```bash
+# test locally
+docker run -p 8080:8080 europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]
+```
+
+```bash
+# push to artifact registry
+docker push europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]
+```

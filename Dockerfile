@@ -4,7 +4,7 @@ COPY pyproject.toml ./
 RUN pip install poetry
 RUN poetry config virtualenvs.create false
 RUN poetry install --with cloud --without dev
-COPY . .
+COPY . /app
 
 EXPOSE 8080
 ENV IS_CLOUD=true
