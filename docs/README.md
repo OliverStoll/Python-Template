@@ -58,8 +58,7 @@ cd docs
 
 
 # Deploy to cloud
-- Replace the `[PROJECT-ID]` and `[REPO]` with your project and repository name, and `[IMAGE]` with the name you want
-- check the dockerfile says `COPY . .` and not `COPY pythonproject .`
+- Replace the `[PROJECT-ID]`, `[REPO]` and `[IMAGE]` with your gcloud project, gcr repository name and the image name you want
 - check you installed all dependencies using `poetry add` and not `pip install`
 ```bash
 # build docker image
@@ -78,6 +77,7 @@ docker push europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]
 
 ### Now you can deploy using gcloud sdk:
 ```bash
-gcloud run deploy [SERVICE-NAME]  --allow-unauthenticated
+# we use image as service name and allow unauthenticated access
+gcloud run deploy [IMAGE]  --allow-unauthenticated
 --image=europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]:latest --region=europe-west1 --project=[PROJECT-ID]
 ```
