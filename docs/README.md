@@ -20,6 +20,7 @@ It uses:
 pre-commit install
 poetry install --no-root
 pip install poetry
+.\.venv\Scripts\activate
 ```
 
 This by default installs only main and dev dependencies. If you want to install cloud dependencies as well, use the following command:
