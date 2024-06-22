@@ -51,9 +51,9 @@ pytest
 # check that conf.py has the right path: sys.path.insert(0, os.path.abspath(".."))
 sphinx-serve -h localhost
 make html
-sphinx-apidoc -t _templates -o source/ ../src
+sphinx-apidoc -t _templates -o source/ ../../src
 make clean
-cd docs
+cd docs/sphinx
 ```
 
 
