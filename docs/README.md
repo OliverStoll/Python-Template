@@ -60,26 +60,36 @@ cd docs/sphinx
 
 
 # How to Deploy to Cloud
-- Replace the `[PROJECT-ID]`, `[REPO]` and `[IMAGE]` with your gcloud project, gcr repository name and the image name you want
-- check you installed all dependencies using `poetry add` and not `pip install`
+Replace the variables with your gcloud project, gcr repository name and the image name you want:
+  - `[PROJECT-ID]`
+  - `[REPO]`
+  - `[IMAGE]`
+  - `[REGION]`
+
+### Set-up gcloud
 ```bash
-# build docker image
-docker build -t europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE] .
+gcloud auth login # log in to gcloud
+```
+```bash
+gcloud auth configure-docker [REGION]-docker.pkg.dev # configure docker (only first time on device)
+```
+
+### Create & push docker image
+```bash
+docker build -t [REGION]-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE] . # build docker image
 ```
 
 ```bash
-# test locally
-docker run -p 8080:8080 europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]
+docker run -p 8080:8080 [REGION]-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE] # test locally
 ```
 
 ```bash
-# push to artifact registry
-docker push europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]
+docker push europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]  # push to artifact registry
 ```
 
-### Now you can deploy using gcloud sdk:
+### Deploy using gcloud sdk:
 ```bash
 # we use image as service name and allow unauthenticated access
 gcloud run deploy [IMAGE]  --allow-unauthenticated
---image=europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]:latest --region=europe-west1 --project=[PROJECT-ID]
+--image=[REGION]-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]:latest --region=[REGION] --project=[PROJECT-ID]
 ```
