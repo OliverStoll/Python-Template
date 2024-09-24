@@ -84,12 +84,11 @@ docker run -p 8080:8080 [REGION]-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE] # te
 ```
 
 ```bash
-docker push europe-west1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]  # push to artifact registry
+docker push [REGION]-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]  # push to artifact registry
 ```
 
 ### Deploy using gcloud sdk:
 ```bash
 # we use image as service name and allow unauthenticated access
-gcloud run deploy [IMAGE]  --allow-unauthenticated
---image=[REGION]-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]:latest --region=[REGION] --project=[PROJECT-ID]
+gcloud run deploy [IMAGE]  --allow-unauthenticated --image=[REGION]-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]:latest --region=[REGION] --project=[PROJECT-ID]
 ```
