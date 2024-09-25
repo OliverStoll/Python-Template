@@ -66,7 +66,7 @@ Replace the variables with your gcloud project, gcr repository name and the imag
   - `[IMAGE]`
   - `[REGION]`
 
-### Set-up gcloud
+### Set-up gcloud locally
 ```bash
 gcloud auth login # log in to gcloud
 ```
@@ -91,4 +91,36 @@ docker push [REGION]-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]  # push to artif
 ```bash
 # we use image as service name and allow unauthenticated access
 gcloud run deploy [IMAGE]  --allow-unauthenticated --image=[REGION]-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]:latest --region=[REGION] --project=[PROJECT-ID]
+```
+
+### Deploy on Cloud Compute (for persistent execution):
+- create a new VM instance on [REGION]
+- check that the allow-ssh firewall rule is enabled (https://console.cloud.google.com/net-security/firewall-manager/firewall-policies/list)
+- SSH into the VM and install docker & gcloud
+```bash
+# install docker
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo tee /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo usermod -aG docker $USER
+```
+```bash
+# install & configure gcloud
+sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates gnupg
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/cloud.google.gpg
+sudo apt-get update
+sudo apt-get install google-cloud-sdk
+gcloud init
+gcloud auth configure-docker [REGION]-docker.pkg.dev # configure docker (only first time on device)
+```
+- run the docker image using the same docker run command
+```bash
+docker run -p 8080:8080 [REGION]-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE] 
 ```
