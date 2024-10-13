@@ -100,23 +100,23 @@ gcloud run deploy [IMAGE]  --allow-unauthenticated --image=[REGION]-docker.pkg.d
 ```bash
 # install docker
 sudo apt-get update
-sudo apt-get install ca-certificates curl gnupg
+sudo apt-get install -y ca-certificates curl gnupg
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo tee /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
 sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo usermod -aG docker $USER
 ```
 ```bash
 # install & configure gcloud
 sudo apt-get update
-sudo apt-get install apt-transport-https ca-certificates gnupg
+sudo apt-get install -y apt-transport-https ca-certificates gnupg
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/cloud.google.gpg
 sudo apt-get update
-sudo apt-get install google-cloud-sdk
+sudo apt-get install -y google-cloud-sdk
 gcloud init
 gcloud auth configure-docker [REGION]-docker.pkg.dev # configure docker (only first time on device)
 ```
