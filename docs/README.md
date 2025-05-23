@@ -61,7 +61,7 @@ cd docs/sphinx
 
 # How to Deploy to Cloud
 Replace the variables with your gcloud project, gcr repository name and the image name you want:
-  - project-id: `ostoll`
+  - project-id: `[PROJECT-ID]`
   - region: `us-east1`
   - `[REPO]`
   - `[IMAGE]`
@@ -77,21 +77,21 @@ gcloud auth configure-docker us-east1-docker.pkg.dev # configure docker (only fi
 
 ### Create & push docker image
 ```bash
-docker build -t us-east1-docker.pkg.dev/ostoll/[REPO]/[IMAGE] . # build docker image
+docker build -t us-east1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE] . # build docker image
 ```
 
 ```bash
-docker run -p 8080:8080 us-east1-docker.pkg.dev/ostoll/[REPO]/[IMAGE] # test locally
+docker run -p 8080:8080 us-east1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE] # test locally
 ```
 
 ```bash
-docker push us-east1-docker.pkg.dev/ostoll/[REPO]/[IMAGE]  # push to artifact registry
+docker push us-east1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]  # push to artifact registry
 ```
 
 ### Deploy to Cloud Run using gcloud sdk:
 ```bash
 # we use image as service name and allow unauthenticated access
-gcloud run deploy [IMAGE]  --allow-unauthenticated --image=us-east1-docker.pkg.dev/ostoll/[REPO]/[IMAGE]:latest --region=us-east1 --project=ostoll
+gcloud run deploy [IMAGE]  --allow-unauthenticated --image=us-east1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE]:latest --region=us-east1 --project=[PROJECT-ID]
 ```
 
 ### Deploy on Cloud Compute (for persistent execution):
@@ -124,5 +124,5 @@ gcloud auth configure-docker us-east1-docker.pkg.dev # configure docker (only fi
 ```
 - run the docker image using the same docker run command
 ```bash
-docker run -p 8080:8080 us-east1-docker.pkg.dev/ostoll/[REPO]/[IMAGE] 
+docker run -p 8080:8080 us-east1-docker.pkg.dev/[PROJECT-ID]/[REPO]/[IMAGE] 
 ```
