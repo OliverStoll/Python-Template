@@ -25,7 +25,7 @@ google-cloud-logging = "^3.9.0"
 
 
 [tool.poetry.group.dev.dependencies]
-poetry = "^1.7.1"
+poetry = "^2"
 pre-commit = "^3.6.0"
 ruff = "^0.1.13"
 pytest = "^7.4.4"

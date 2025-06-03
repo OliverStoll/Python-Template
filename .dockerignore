@@ -1,4 +1,3 @@
-venv/
 docs/
 tests/
 poetry.lock
@@ -6,4 +5,41 @@ poetry.lock
 .pytest_cache
 .ruff_cache
 
-# .env
+# Ignore VCS
+.git
+.gitignore
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments (both in-project and external)
+venv/
+.venv/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+*.out
+
+# IDE/editor configs
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Docker artifacts
+Dockerfile
+docker-compose.yml
