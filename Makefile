@@ -89,7 +89,10 @@ push:
 # Deploy target
 deploy:
 	$(foreach service, $(SERVICES), \
-		gcloud run deploy $(service) --allow-unauthenticated \
+		gcloud run deploy $(service) \
+		--allow-unauthenticated \
 		--image=$(GCLOUD_REGION)-docker.pkg.dev/$(GCLOUD_PROJECT_ID)/$(GCLOUD_ARTIFACT_REPO)/$(service):latest \
-		--region=$(GCLOUD_REGION) --project=$(GCLOUD_PROJECT_ID) --memory=$(MEMORY))
+		--region=$(GCLOUD_REGION) \
+		 --project=$(GCLOUD_PROJECT_ID) \
+		 --memory=$(MEMORY))
 

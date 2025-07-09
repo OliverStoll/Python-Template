@@ -22,4 +22,4 @@ if __name__ == "__main__":
     port = int(os.getenv("PORT", 8080))
     host = "0.0.0.0"
     print(f"Test locally on http://localhost:{port}")
-    uvicorn.run(app, host=host, port=port)
+    uvicorn.run(app, host=host, port=port, log_level="critical", access_log=False)
