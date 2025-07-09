@@ -32,3 +32,17 @@ repos:
         args: [ cc, src/, -s, -n, B ]
         language: system
         types: [ python ]
+
+      - id: gitlint
+        name: Gitlint
+        entry: poetry run gitlint
+        language: system
+        stages: [ commit-msg ]
+        pass_filenames: false
+
+      - id: commitizen-check
+        name: Commitizen Check
+        entry: poetry run cz check
+        language: system
+        stages: [ commit-msg ]
+        pass_filenames: false

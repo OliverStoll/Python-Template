@@ -43,7 +43,7 @@ init: $(VENV_PYTHON)
 	$(POETRY) env use $(VENV_PYTHON)
 	$(POETRY) lock
 	$(POETRY) install --no-root
-	$(POETRY) run pre-commit install
+	$(POETRY) run pre-commit install --hook-type pre-commit --hook-type commit-msg
 
 
 
