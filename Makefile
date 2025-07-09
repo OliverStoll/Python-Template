@@ -10,9 +10,13 @@ endif
 VENV_DIR ?= .venv
 
 ifeq ($(OS),Windows_NT)
-    VENV_PYTHON = $(VENV_DIR)\Scripts\python.exe
+    VENV_PYTHON = $(VENV_DIR)/Scripts/python.exe
+    PIP = $(VENV_DIR)/Scripts/pip.exe
+    POETRY = $(VENV_DIR)/Scripts/poetry.exe
 else
     VENV_PYTHON = $(VENV_DIR)/bin/python
+    PIP = $(VENV_DIR)/bin/pip
+    POETRY = $(VENV_DIR)/bin/poetry
 endif
 
 
@@ -27,14 +31,17 @@ SERVICES ?= $(GCLOUD_RUN_SERVICES)
 
 ######   PROJECT HELPERS   #####
 
-	##
-.PHONY: init-project
+.PHONY: init
 
-init-project:
+init: $(VENV_PYTHON)
+	$(PIP) install poetry
+	$(POETRY) env use $(VENV_PYTHON)
+	$(POETRY) install --no-root
+	$(POETRY) run pre-commit install
+
+# Create the virtual environment only when its interpreter is missing
+$(VENV_PYTHON):
 	python -m venv $(VENV_DIR)
-	poetry env use $(VENV_PYTHON)
-	poetry install --no-root
-	poetry run pre-commit install
 
 
 ######   SERVICE NAMES   #####
