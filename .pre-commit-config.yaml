@@ -7,6 +7,7 @@ repos:
       - id: check-added-large-files
       - id: check-docstring-first
       - id: detect-private-key
+
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.1.13
     hooks:
@@ -20,5 +21,14 @@ repos:
     rev: v1.8.0
     hooks:
       - id: mypy
-        args: [--ignore-missing-imports]
+        args: [--ignore-missing-imports, --namespace-packages]
         additional_dependencies: [types-pyyaml, types-requests]
+
+  - repo: local
+    hooks:
+      - id: radon-complexity
+        name: Radon Cyclomatic Complexity
+        entry: poetry run radon cc
+        args: [ -s, -n, B ]
+        language: system
+        types: [ python ]
